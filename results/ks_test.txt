@@ -1,0 +1,25 @@
+author
+
+freq_pun
+Ks_2sampResult(statistic=0.502427537669195, pvalue=2.5966491516909927e-219)
+freq_pun: baseline_between 0.2398452664115182, baseline_within 0.08279968722401101
+freq_word_nb_punctuation
+Ks_2sampResult(statistic=0.3654022584417983, pvalue=3.3575999258453656e-116)
+freq_word_nb_punctuation: baseline_between 0.15372045876717733, baseline_within 0.0682142911005527
+freq_length_sen
+Ks_2sampResult(statistic=0.30225134911461154, pvalue=1.2183528126733877e-79)
+freq_length_sen: baseline_between 0.27532690253019176, baseline_within 0.1494100502027445
+normalised_tran_mat
+Ks_2sampResult(statistic=0.5109780721853263, pvalue=7.95790587980912e-227)
+normalised_tran_mat: baseline_between 0.4331342300281922, baseline_within 0.16728061350543905
+
+genre
+
+freq_pun
+Ks_2sampResult(statistic=0.3254337120501018, pvalue=3.0455164144999954e-92)
+freq_word_nb_punctuation
+Ks_2sampResult(statistic=0.20363200895103212, pvalue=2.247049512749103e-36)
+freq_length_sen
+Ks_2sampResult(statistic=0.2550622066697204, pvalue=7.931522646483969e-57)
+normalised_tran_mat
+Ks_2sampResult(statistic=0.33093662188647505, pvalue=2.2503107765751855e-95)

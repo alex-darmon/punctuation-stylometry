@@ -1,0 +1,57 @@
+\begin{tabular}{ll}
+\toprule
+{} &                                            results \\
+\midrule
+0  &             Matthews, Stanley R. (32 - 0.01 - 0.0) \\
+1  &               Hill, Grace Brooks (11 - 0.01 - 1.0) \\
+2  &  Wirt, Mildred A. (Mildred Augustine) (30 - 0.0... \\
+3  &  Goodwin, Harold L. (Harold Leland) (13 - 0.01 ... \\
+4  &                 Young, Clarence (23 - 0.01 - 0.14) \\
+5  &  Hancock, H. Irving (Harrie Irving) (40 - 0.01 ... \\
+6  &  United States. Warren Commission (12 - 0.01 - ... \\
+7  &       Dell, Ethel M. (Ethel May) (16 - 0.01 - 0.2) \\
+8  &  Hayes, Clair W. (Clair Wallace) (18 - 0.01 - 0.0) \\
+9  &                 Hocking, Joseph (11 - 0.01 - 0.67) \\
+10 &                 Parrish, Randall (15 - 0.01 - 0.0) \\
+11 &               Patchin, Frank Gee (15 - 0.01 - nan) \\
+12 &        Norris, Kathleen Thompson (11 - 0.01 - 0.0) \\
+13 &              Brame, Charlotte M. (11 - 0.01 - 0.0) \\
+14 &            Merriman, Henry Seton (14 - 0.01 - 0.0) \\
+15 &                      Walton, Amy (10 - 0.01 - 0.0) \\
+16 &             Locke, William John (21 - 0.01 - 0.25) \\
+17 &                        Suetonius (14 - 0.01 - 0.0) \\
+18 &                        Henry, O. (13 - 0.01 - 0.0) \\
+19 &              Blanchard, Amy Ella (12 - 0.01 - 1.0) \\
+20 &                   Lynde, Francis (17 - 0.01 - 0.0) \\
+21 &                 Hope, Laura Lee (64 - 0.01 - 0.18) \\
+22 &         Bloundelle-Burton, John (14 - 0.01 - 0.33) \\
+23 &                Penrose, Margaret (22 - 0.01 - 0.5) \\
+24 &            Wairy, Louis Constant (12 - 0.01 - 0.0) \\
+25 &                  Finley, Martha (35 - 0.01 - 0.38) \\
+26 &           Roy, Lillian Elizabeth (16 - 0.01 - 0.0) \\
+27 &                 Appleton, Victor (31 - 0.01 - 0.6) \\
+28 &              Cholmondeley, Mary (11 - 0.01 - 0.75) \\
+29 &  Harper, Charles G. (Charles George) (16 - 0.01... \\
+30 &                Chadwick, Lester (16 - 0.01 - 0.25) \\
+31 &  Bourrienne, Louis Antoine Fauvelet de (16 - 0.... \\
+32 &          Douglas, Alan, Captain (10 - 0.01 - 0.25) \\
+33 &                Emerson, Alice B. (23 - 0.01 - 1.0) \\
+34 &                   Shaler, Robert (18 - 0.02 - 0.6) \\
+35 &              Vance, Louis Joseph (12 - 0.02 - nan) \\
+36 &        Mackintosh, Charles Henry (11 - 0.02 - 0.0) \\
+37 &  Mathews, Joanna H. (Joanna Hooe) (13 - 0.02 - ... \\
+38 &                     Ferber, Edna (10 - 0.02 - 0.0) \\
+39 &           Phillips, David Graham (14 - 0.02 - 0.5) \\
+40 &               Collingwood, Harry (33 - 0.02 - 0.0) \\
+41 &                 Mitford, Bertram (27 - 0.02 - 0.0) \\
+42 &  Buffon, Georges Louis Leclerc, comte de (10 - ... \\
+43 &  Comstock, Harriet T. (Harriet Theresa) (10 - 0... \\
+44 &             Weyman, Stanley John (28 - 0.02 - 0.0) \\
+45 &  Reeve, Arthur B. (Arthur Benjamin) (14 - 0.02 ... \\
+46 &                    Barr, Robert (20 - 0.02 - 0.25) \\
+47 &  Hutcheson, John C. (John Conroy) (17 - 0.02 - ... \\
+48 &                Standish, Burt L. (25 - 0.02 - 0.0) \\
+49 &                  Cannon, Richard (26 - 0.02 - 0.0) \\
+\bottomrule
+\end{tabular}
+
