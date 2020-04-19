@@ -18,7 +18,7 @@ import scipy.io
 
 def convert_to_matlab(distance_matrix, list_auths, name):
         sp.io.savemat(name+'.mat', mdict={'distance_matrix': distance_matrix})
-        sp.io.savemat(name+"_list_authors", mdict={'list_authors': list_auths})
+        sp.io.savemat(name+"_list_authors.mat", mdict={'list_authors': list_auths})
 
 def get_distance_matrices(list_auth, feature,feature_name, df=None, 
                           distance=d_KL,

@@ -73,7 +73,7 @@ def plot_consitency(feature, df_consistency,  baseline, col_name='author',
     fig, ax = plt.subplots()
     axes = plt.gca()
     axes.set_xlim([0,len(df_consistency_group)])
-    axes.set_ylim([-0.75,2])
+    axes.set_ylim([0,1])
     for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +
                  ax.get_xticklabels() + ax.get_yticklabels()):
         item.set_fontsize(options.font_size)
@@ -87,7 +87,7 @@ def plot_consitency(feature, df_consistency,  baseline, col_name='author',
     if with_legend:
         plt.legend(bbox_to_anchor=(0., 1.02, 2, .102),fontsize=options.font_size, 
                    loc=3,mode="expand", ncol=3, frameon=False)
-    
+    plt.yticks([0,0.5,1])
     if path_consistency is not None:
         plt.savefig(path_consistency+'/plot_consistency_{}.png'.format(feature))
     

@@ -53,14 +53,12 @@ df_index_nn = get_nn_indexes(vector_size, df,
 launch_nearest_neighbour(df, df_index_nn.iloc[:-1],
                          list_features=options.feature_names,
                          col_class='author',
-                         test_size=0.2, random_state=8,
                          path_index_nn = 'data/pickle/recognition/author')
 
 
 launch_neural_net(df, df_index_nn,list_features=list_features,
                       feature_names=feature_names,
                       col_class='author',
-                      test_size=0.2, random_state=8,
                       path_index_nn = 'data/pickle/recognition/author',
                       path_res='results/recognition/author')
 

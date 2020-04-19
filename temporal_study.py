@@ -27,7 +27,8 @@ from punctuation.utils.utils import (
 from punctuation.time_series.time_functions import (
     get_temporal,
     plot_histogram_years,
-    plot_freq_overtime
+    plot_freq_overtime,
+    plot_col_overtime
 )
 import pandas as pd
 import numpy as np
@@ -40,7 +41,10 @@ df = load_corpus()
 df_temporal = get_temporal(df=df)
 
 
-plot_histogram_years(df_temporal,
+plot_histogram_years(df_temporal, show_middleyear=False,
+                     to_show=True, print_legend=False)
+
+plot_histogram_years(df_temporal,show_middleyear=True,
                      to_show=True, print_legend=False)
 
 list_freq_pun_col = list(range(options.nb_signs))
@@ -63,20 +67,30 @@ plot_freq_overtime(df_temporal, list_freq_pun_col,
 
 
 wells = pd.read_csv('data/Marya_Wells.csv').sort_values('Date')
-wells = pd.merge(wells, df_temporal, how='left', on='title')
+wells = pd.merge(wells, df_temporal, how='inner', on='title')
 
 wells['Date_bin'] = wells['Date']
 plot_freq_overtime(wells, list_freq_pun_col,
                    col_date='Date',
                    min_date=min(wells['Date']),
                    max_date=1922,
-                   print_legend=False)
+                   print_legend=False, show_ci=True)
 
+
+fleming = pd.read_csv('data/Alex_Fleming.csv').sort_values('Date')
+fleming = pd.merge(fleming, df_temporal, how='left', on='title')
+
+fleming['Date_bin'] = fleming['Date']
+plot_freq_overtime(fleming, list_freq_pun_col,
+                   col_date='Date',
+                   min_date=min(fleming['Date']),
+                   max_date=max(fleming['Date']),
+                   print_legend=False, show_ci=True)
 
 
 
 shakespeare = pd.read_csv('data/Alex_Shakespeare.csv').sort_values('Date')
-shakespeare = pd.merge(shakespeare, df_temporal, how='left', on='title')
+shakespeare = pd.merge(shakespeare, df_temporal, how='inner', on='title')
 
 shakespeare['Date_bin'] = shakespeare['Date']
 plot_freq_overtime(shakespeare, list_freq_pun_col,
@@ -95,7 +109,7 @@ plot_freq_overtime(dickens, list_freq_pun_col,
                    col_date='Date',
                    min_date=1836,
                    max_date=1871,
-                   print_legend=False)
+                   print_legend=False, show_ci=True)
 
 
 

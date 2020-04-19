@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
 from punctuation.config import options
-from punctuation.visualisation.visualisation import color_vector
+from punctuation.visualisation.visualisation import color_vector, marker_vector
 
 
 ###### Repartition over time deathdate birthdate ###
@@ -55,8 +55,9 @@ def get_temporal(df=None):
 
 
 
-def plot_histogram_years(df_temporal,# col_name='author_birthdate',
-                         to_show=True, print_legend=False):
+def plot_histogram_years(df_temporal, show_middleyear=True,# col_name='author_birthdate',
+                         to_show=True, print_legend=False,
+                         show_labels=True):
     
     bar_width=2.5
     col1 = 'author_birthdate_bin'
@@ -99,16 +100,18 @@ def plot_histogram_years(df_temporal,# col_name='author_birthdate',
     plt.bar(idx2, list(auth_date2['title']), width = 10,# hatch="/",
             color='grey', label='death date', 
             )
-    
-    plt.bar(idx3, list(auth_date3['title']), width = 10,
-             color='y',alpha=0.4, label='middle date'
-             )
+    if show_middleyear:
+        plt.bar(idx3, list(auth_date3['title']), width = 10,
+                color='y',alpha=0.4, label='middle date'
+                )
     if print_legend:
         plt.legend(bbox_to_anchor=(0., 1.02, 1.4, .102),fontsize=18, loc=3,
                    mode="expand", ncol=3, frameon=False)
         plt.xticks( list(np.linspace(0,len(auth_date1)-1, 20)), [str(list(auth_date1[col1])[int(i)]) \
                     for i in list(np.linspace(0,len(auth_date1)-1, 20))], rotation=90)
-        plt.xlabel('Date')
+    if show_labels:    
+        plt.xlabel('year')
+        plt.ylabel('number of documents')
     #plt.title('Number of books by date in the Database')
     if to_show:
         plt.show()
@@ -173,7 +176,7 @@ def plot_col_overtime(df_temporal,col, col_date,
                     label='confidence intervals', alpha=0.2)
     
     plt.xlabel('year')
-#    plt.ylabel('frequency')
+    plt.ylabel('number of words')
     
     plt.xticks(np.arange(min_date, max_date, int((max_date-min_date)/6)+1))
     if print_legend:
@@ -188,7 +191,8 @@ def plot_col_overtime(df_temporal,col, col_date,
 def plot_freq_overtime(df_temporal, list_freq_pun_col, col_date,
                        min_date=1700, max_date=1950,
                        to_show=True, print_legend=False,
-                       confidence=0.95, with_bin=True):
+                       confidence=0.95, with_bin=True,
+                       show_ci=True):
     for i in list_freq_pun_col:
         col = 'FREQ_'+str(i)
         new_temporal_df = df_temporal[(df_temporal[col_date]>=min_date)&
@@ -218,21 +222,23 @@ def plot_freq_overtime(df_temporal, list_freq_pun_col, col_date,
         list_upper_bound = []
     
         list_dates = list(freq_over_time['{}_bin'.format(col_date)])
-#        for mean, cou, se, std, maxi, mini in zip(list_mean, list_count, 
-#                                      list_sem, list_std,
-#                                      list_max, list_min):
-#            h = se * sp.stats.t.ppf((1 + confidence) / 2., cou-1)
-#            list_max.append(maxi)#(mean + h)
-#            list_min.append(mini)# (mean - h)
-#            
-#    #          if method == 't':
-#    #        test_stat = stats.t.ppf((interval + 1)/2, n)
-#    #      elif method == 'z':
-#            test_stat = sp.stats.norm.ppf((confidence + 1)/2)
-#            lower_bound = mean - test_stat * std / np.sqrt(cou)
-#            upper_bound = mean + test_stat * std / np.sqrt(cou)
-#            list_lower_bound.append(lower_bound)
-#            list_upper_bound.append(upper_bound)
+        for (mean, cou, se, std, 
+#             maxi, mini
+             ) in zip(list_mean, list_count, 
+                                      list_sem, list_std):
+#                                      ,list_max, list_min):
+            h = se * sp.stats.t.ppf((1 + confidence) / 2., cou-1)
+#            list_max.append(mean + h) #(maxi)
+#            list_min.append(mean - h) #(mini)
+            
+    #          if method == 't':
+    #        test_stat = stats.t.ppf((interval + 1)/2, n)
+    #      elif method == 'z':
+            test_stat = sp.stats.norm.ppf((confidence + 1)/2)
+            lower_bound = mean - test_stat * std / np.sqrt(cou)
+            upper_bound = mean + test_stat * std / np.sqrt(cou)
+            list_lower_bound.append(lower_bound)
+            list_upper_bound.append(upper_bound)
         
         ax = plt.subplot(111, )
         for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +
@@ -242,8 +248,10 @@ def plot_freq_overtime(df_temporal, list_freq_pun_col, col_date,
         axes = plt.gca()
         axes.set_xlim([min_date, max_date])
         ax.plot(list_dates,list_mean, color=color_vector[i],
-                label=options.punctuation_vector[int(col[-1])],marker='o')
-        ax.fill_between(list_dates, list_max, list_min, color="grey", alpha=0.2)
+                label=options.punctuation_vector[int(col[-1])], 
+                marker=marker_vector[i])
+        if show_ci:
+            ax.fill_between(list_dates, list_max, list_min, color="grey", alpha=0.2)
     
     plt.xlabel('year')
     plt.ylabel('frequency')

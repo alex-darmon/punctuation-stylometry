@@ -23,7 +23,7 @@ from sklearn.preprocessing import  StandardScaler
 
 def get_acc_kl_nearest_neigh(index_train, index_test, feature,
                     feature_name, df=None,
-                    distance=d_KL, col='author',
+                    distance=d_KL, col='author', #save=True,
                     path_nn = 'data/pickle/recognition/author'):
     
     if df is None: df = load_corpus()
@@ -75,9 +75,9 @@ def get_acc_kl_nearest_neigh(index_train, index_test, feature,
                len(index_test),  acc)),
               file=open('data/pickle/recognition/author/res_neares_recognistion.txt','a'))
     
-    
+#    if save:
     save_as_pickled_object(df_compare, '{}/nearest_neigh_{}_{}.p'.format(path_nn,
-                                          nb_classes, feature_name))
+                                      nb_classes, feature_name))
 
     return (nb_classes, len(X_train), len(X_test),
             accuracy_score(y_test, predictions))
@@ -90,6 +90,7 @@ def get_acc_neural_net(index_train,
                 features, df,
                 distance, col,
                 layers=2000,
+#                save=True,
                 path_nn='data/pickle/recognition/author'):    
                     
     X = df[features]
@@ -130,17 +131,17 @@ def get_acc_neural_net(index_train,
     predictions = df_compare['predictions'].tolist()
     
     acc = accuracy_score(y_test, predictions)
-    print(acc)
-    print(str((feature_name, nb_classes, len(index_train), 
-               len(index_test),  acc)),
-              file=open('data/pickle/recognition/author/res_neuralnet_recognition.txt','a'))
+#    print(acc)
+#    print(str((feature_name, nb_classes, len(index_train), 
+#               len(index_test),  acc)),
+#              file=open('data/pickle/recognition/author/res_neuralnet_recognition.txt','a'))
     
-   
+#    if save:
     save_as_pickled_object(df_compare, '{}/neural_net_{}_{}.p'.format(path_nn,
-                                          nb_classes, feature_name))
+                                      nb_classes, feature_name))
 
     return (nb_classes, len(X_train), len(X_test),
-            accuracy_score(y_test, predictions))
+            acc)
 
 
 

@@ -42,9 +42,11 @@ def get_train_test_index(nb_classes, df,
 def get_nn_indexes(size_experiments, df=None,
                 col_class='author',
                 test_size=0.2, random_state=8,
+                save=True,
                 path_index_nn = 'data/pickle/recognition/author',
                 mode_selection=1):
     df_index_nn = try_to_load_as_pickled_object_or_None('{}/df_index_{}.p'.format(path_index_nn,col_class))
+    
     if df_index_nn is None:
         if df is None: df=load_corpus()
         idxex = []
@@ -59,7 +61,8 @@ def get_nn_indexes(size_experiments, df=None,
             idxex.append((nb_classes, index_train, index_test))
         df_index_nn = pd.DataFrame(idxex, columns=['nb_classes', 'index_train',
                                                    'index_test'])
-        save_as_pickled_object(df_index_nn,
+        if save:    
+            save_as_pickled_object(df_index_nn,
                                '{}/df_index_{}.p'.format(path_index_nn,col_class))
     return df_index_nn
 

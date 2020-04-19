@@ -6,9 +6,12 @@ Created on Sat Sep 14 11:36:50 2019
 @author: alexandradarmon
 """
 
+import numpy as np
+from punctuation.config import options
+
 def update_mat_tot(tot,mat,char1,char2):
-    ind1 = punctuation_vector.index(char1)
-    ind2 = punctuation_vector.index(char2)
+    ind1 = options.punctuation_vector.index(char1)
+    ind2 = options.punctuation_vector.index(char2)
     s = tot[ind1]= tot[ind1]+1
     mat[ind1,:] = mat[ind1,:]*(s-1)
     mat[ind1,ind2] = mat[ind1,ind2]+1
@@ -19,8 +22,9 @@ def update_mat_tot(tot,mat,char1,char2):
 #sequence of punctuation marks
 def transition_mat(seq_pun):
     try:
-        transition_mat =np.zeros((NB_sign, NB_sign), dtype='f')
-        count_pun =  np.zeros(NB_sign, dtype='f')
+        transition_mat =np.zeros((len(options.punctuation_vector),
+                                  len(options.punctuation_vector)), dtype='f')
+        count_pun =  np.zeros(len(options.punctuation_vector), dtype='f')
     
         for i in range(0,len(seq_pun)-1):
             update_mat_tot(count_pun,
@@ -51,8 +55,8 @@ def get_transition_mat(norm_mat,freq_pun):
         return None
 
 def update_mat_nb_words(tot,mat,char1,char2,count):
-    ind1 = punctuation_vector.index(char1)
-    ind2 = punctuation_vector.index(char2)
+    ind1 = options.punctuation_vector.index(char1)
+    ind2 = options.punctuation_vector.index(char2)
     s = tot[ind1,ind2] = tot[ind1,ind2]+1
     mat[ind1,ind2] = (mat[ind1,ind2]*(s-1)+count)/s
 
@@ -60,11 +64,13 @@ def update_mat_nb_words(tot,mat,char1,char2,count):
 # words between two punctuation marks:
 def mat_nb_words_pun(seq_nb_words_pun):
     try:
-        mat_nb_word_pun = np.zeros((NB_sign, NB_sign), dtype='f')
-        count_pun =  np.zeros((NB_sign, NB_sign), dtype='f')
+        mat_nb_word_pun = np.zeros((len(options.punctuation_vector), 
+                                    len(options.punctuation_vector)), dtype='f')
+        count_pun =  np.zeros((len(options.punctuation_vector),
+                               len(options.punctuation_vector)), dtype='f')
         for i in range(1,len(seq_nb_words_pun)-2, 2):
-            update_mat_nb_words(count_pun,mat_nb_word_pun,
-                seq_nb_words_pun[i],seq_nb_words_pun[i+2],
+            update_mat_nb_words(count_pun, mat_nb_word_pun,
+                seq_nb_words_pun[i], seq_nb_words_pun[i+2],
                 seq_nb_words_pun[i+1])
         
         return mat_nb_word_pun

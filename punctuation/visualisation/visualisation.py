@@ -16,6 +16,24 @@ from webcolors import hex_to_rgb
 
 color_vector = ['#2764A2','#EC7428','#438823', '#B9312B', '#785BAD','#72473D',
                 '#CA6FB6', '#6C6C6C','#B1AC27', '#44ADC1']
+
+markers = {'o': 'circle','D': 'diamond', 'p': 'pentagon',
+            'v': 'triangle_down', '^': 'triangle_up', 
+           '<': 'triangle_left', '>': 'triangle_right', 
+           's': 'square', '*': 'star','x': 'x',
+           
+           '_': 'hline', 'p': 'pentagon', 
+           'h': 'hexagon1', 'H': 'hexagon2',  'x': 'x',
+           'D': 'diamond', 'd': 'thin_diamond', '|': 'vline',  '+': 'plus',
+           'P': 'plus_filled', 'X': 'x_filled', 0: 'tickleft', 1: 'tickright',
+           2: 'tickup', 3: 'tickdown', 4: 'caretleft', 5: 'caretright', 
+           6: 'caretup', 7: 'caretdown', 8: 'caretleftbase', '*': 'star', 
+           9: 'caretrightbase', 10: 'caretupbase', 11: 'caretdownbase', 
+           'None': 'nothing', None: 'nothing', ' ': 'nothing', '': 'nothing'}
+
+marker_vector =  list(markers.keys())
+
+
 rgb_color_vector = [hex_to_rgb(i) for i in color_vector]
 
 
@@ -96,6 +114,8 @@ def show_weapon_hist(kl_within_author_samples, kl_between_author_samples,
         plt.axvline(baseline_within, color='black', linestyle=':')
     plt.xlim(min(min(kl_within_author_samples), 
                  min(kl_between_author_samples)),2)
+    plt.ylim(0,1)
+    plt.yticks([0,0.5,1])
     plt.xticks(x_bins)
     
     plt.xlabel('KL divergence')

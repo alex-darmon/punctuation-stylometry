@@ -112,7 +112,7 @@ df = load_corpus()
 run_consistency(df=df, col_name='author', distance=d_KL,
                 path_consistency='data/pickle/consistency/author',
                 path_distance_matrices='data/pickle/distance_matrices/author',
-                col_unique='book_id', show_distance_matrices=True,
+                col_unique='book_id', show_distance_matrices=False,
                 features=options.feature_names)
 
 

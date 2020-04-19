@@ -104,7 +104,7 @@ for feature_name in options.feature_names:
      baseline_between, baseline_within) = \
          show_weapon(feature_name,
                 col_name='genre', nb_books=1000,
-                df=df, distance=d_KL, col_unique='book_id',
+                df=df_genre, distance=d_KL, col_unique='book_id',
                 path_consistency='data/pickle/consistency/genre',
                 path_res='results/comparison/genre',
                 reshuffle=False,
